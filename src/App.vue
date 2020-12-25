@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Todos v-bind:todoList="todoList" /></div
+    <Todos v-bind:todoList="todoList" v-on:del-todo="deleteTodo" /></div
 ></template>
 
 <script>
@@ -26,10 +26,16 @@ export default {
         {
           id: 3,
           title: "Cook lunch",
-          completed: false,
+          completed: true,
         },
       ],
     };
+  },
+  methods: {
+    deleteTodo(id) {
+      console.log(id);
+      this.todoList = this.todoList.filter((todoItem) => todoItem.id !== id);
+    },
   },
 };
 </script>
