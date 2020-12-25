@@ -26,12 +26,12 @@ export default {
       //this.todoList = this.todoList.filter((todoItem) => todoItem.id !== id);
       axios
         .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-        .then(
-          (res) =>
-            (this.todoList = this.todoList.filter(
-              (todoItem) => todoItem.id !== id
-            ))
-        )
+        .then((res) => {
+          console.log(res.data); //! Printing response here, or it gives error for Build "Unused variable"
+          this.todoList = this.todoList.filter(
+            (todoItem) => todoItem.id !== id
+          );
+        })
         .catch((err) => console.log(err));
     },
     addTodo(newTodo) {
